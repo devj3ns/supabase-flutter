@@ -48,6 +48,7 @@ class FileObject {
   final String? createdAt;
   final String? lastAccessedAt;
   final Map<String, dynamic>? metadata;
+  final Map<String, dynamic>? userMetadata;
   final Bucket? buckets;
 
   const FileObject({
@@ -59,6 +60,7 @@ class FileObject {
     required this.createdAt,
     required this.lastAccessedAt,
     required this.metadata,
+    required this.userMetadata,
     required this.buckets,
   });
 
@@ -71,6 +73,7 @@ class FileObject {
         createdAt = json['created_at'] as String?,
         lastAccessedAt = json['last_accessed_at'] as String?,
         metadata = json['metadata'] as Map<String, dynamic>?,
+        userMetadata = json['user_metadata'] as Map<String, dynamic>?,
         buckets =
             json['buckets'] != null ? Bucket.fromJson(json['buckets']) : null;
 }

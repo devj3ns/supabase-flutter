@@ -115,10 +115,16 @@ class FileOptions {
   /// Throws a FormatError if the media type is invalid.
   final String? contentType;
 
+  /// The metadata option is an object that allows you to store additional information about the file.
+  /// This information can be used to filter and search for files.
+  /// The metadata object can contain any key-value pairs you want to store.
+  final Map<String, dynamic>? metadata;
+
   const FileOptions({
     this.cacheControl = '3600',
     this.upsert = false,
     this.contentType,
+    this.metadata,
   });
 }
 

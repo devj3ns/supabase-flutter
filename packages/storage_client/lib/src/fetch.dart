@@ -95,6 +95,10 @@ class Fetch {
       ..fields['cacheControl'] = fileOptions.cacheControl
       ..headers['x-upsert'] = fileOptions.upsert.toString();
 
+    if (fileOptions.metadata != null) {
+      request.fields['metadata'] = json.encode(fileOptions.metadata);
+    }
+
     final http.StreamedResponse streamedResponse;
     final r = RetryOptions(maxAttempts: (retryAttempts + 1));
     streamedResponse = await r.retry<http.StreamedResponse>(
@@ -138,6 +142,10 @@ class Fetch {
       ..files.add(multipartFile)
       ..fields['cacheControl'] = fileOptions.cacheControl
       ..headers['x-upsert'] = fileOptions.upsert.toString();
+
+    if (fileOptions.metadata != null) {
+      request.fields['metadata'] = json.encode(fileOptions.metadata);
+    }
 
     final http.StreamedResponse streamedResponse;
     final r = RetryOptions(maxAttempts: (retryAttempts + 1));
